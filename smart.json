@@ -1,10 +1,10 @@
 {
-	"name": "cfs-s3",
-	"description": "Amazon Web Services S3 storage adapter for CollectionFS",
-	"homepage": "https://github.com/CollectionFS/Meteor-cfs-s3",
-	"author": "Eric Dobbertin (https://github.com/aldeed), Morten Henriksen (https://github.com/raix)",
+	"name": "gliese-s3",
+	"description": "Fork of Amazon Web Services S3 storage adapter for CollectionFS",
+	"homepage": "https://github.com/gliesesoftware/gliese-cfs-s3",
+	"author": "Gliese Software (forked)",
 	"version": "0.0.30",
-	"git": "https://github.com/CollectionFS/Meteor-cfs-s3.git",
+	"git": "https://github.com/gliesesoftware/gliese-cfs-s3.git",
 	"packages": {
 		"cfs-storage-adapter": {}
 	}

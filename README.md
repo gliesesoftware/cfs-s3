@@ -1,5 +1,8 @@
-cfs:s3
+gliese:s3
 =========================
+*************
+Fork of cfs:s3 package, for internal use only - please use the cfs:s3 package instead.
+*************
 
 NOTE: This package is under active development right now (2014-5-12). It has
 bugs and the API may continue to change. Please help test it and fix bugs,

@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'cfs:s3',
+  name: 'gliese:s3',
   version: '0.0.1',
-  summary: "Amazon Web Services S3 storage adapter for CollectionFS",
-  git: "https://github.com/CollectionFS/Meteor-cfs-s3.git"
+  summary: "Fork of Amazon Web Services S3 storage adapter for CollectionFS",
+  git: "https://github.com/gliesesoftware/gliese-cfs-s3"
 });
 
 Npm.depends({
@@ -25,7 +25,7 @@ Package.on_use(function(api) {
 });
 
 Package.on_test(function(api) {
-  api.use(['cfs:standard-packages', 'cfs:s3', 'test-helpers', 'tinytest'], 'server');
+  api.use(['cfs:standard-packages', 'gliese:s3', 'test-helpers', 'tinytest'], 'server');
   api.add_files('tests/server-tests.js', 'server');
   api.add_files('tests/client-tests.js', 'client');
 });
