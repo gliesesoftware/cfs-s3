@@ -3,7 +3,7 @@
 	"description": "Fork of Amazon Web Services S3 storage adapter for CollectionFS",
 	"homepage": "https://github.com/gliesesoftware/gliese-cfs-s3",
 	"author": "Gliese Software (forked)",
-	"version": "0.0.30",
+	"version": "0.0.2",
 	"git": "https://github.com/gliesesoftware/gliese-cfs-s3.git",
 	"packages": {
 		"cfs-storage-adapter": {}

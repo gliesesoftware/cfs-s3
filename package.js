@@ -1,6 +1,6 @@
 Package.describe({
   name: 'gliese:s3',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: "Fork of Amazon Web Services S3 storage adapter for CollectionFS",
   git: "https://github.com/gliesesoftware/gliese-cfs-s3"
 });
