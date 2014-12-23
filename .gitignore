@@ -4,3 +4,5 @@
 /smart.lock
 /packages/
 *.DS_Store
+/.idea
+
