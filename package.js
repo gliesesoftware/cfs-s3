@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'gliese:s3',
-  version: '0.0.2',
-  summary: "Fork of Amazon Web Services S3 storage adapter for CollectionFS",
-  git: "https://github.com/gliesesoftware/gliese-cfs-s3"
+  name: 'gliese:cfs-s3',
+  version: '0.0.3',
+  summary: "Gliese flavour of S3 storage adapter for CollectionFS (INTERNAL USE ONLY)",
+  git: "https://github.com/gliesesoftware/cfs-s3.git"
 });
 
 Npm.depends({
@@ -14,7 +14,7 @@ Npm.depends({
 });
 
 Package.on_use(function(api) {
-  api.use(['cfs:base-package@0.0.0', 'cfs:storage-adapter@0.0.0']);
+  api.use(['gliese:cfs-base@0.0.28', 'gliese:cfs-storage@0.1.2']);
   api.add_files([
     's3.server.js',
     // 's3.indirect.streaming.js',
@@ -25,7 +25,7 @@ Package.on_use(function(api) {
 });
 
 Package.on_test(function(api) {
-  api.use(['cfs:standard-packages', 'gliese:s3', 'test-helpers', 'tinytest'], 'server');
+  api.use(['gliese:cfs-core', 'gliese:cfs-s3', 'test-helpers', 'tinytest'], 'server');
   api.add_files('tests/server-tests.js', 'server');
   api.add_files('tests/client-tests.js', 'client');
 });
