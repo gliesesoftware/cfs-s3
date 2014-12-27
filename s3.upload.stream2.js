@@ -12,10 +12,10 @@ AWS.S3.prototype.createReadStream = function(params, options) {
 // Extend the AWS.S3 API
 AWS.S3.prototype.createWriteStream = function(params, options) {
   var self = this;
-
+  console.log('AWS s3', params, options)
   //Create the writeable stream interface.
   var writeStream = Writable({
-    highWaterMark: 4194304 // 4 MB
+    highWaterMark: 4194304// 6 Mebibyte (yes, Mebi...)
   });
 
   var partNumber = 1;
@@ -27,9 +27,13 @@ AWS.S3.prototype.createWriteStream = function(params, options) {
   var multipartUploadID = null;
   var waitingCallback;
   var fileKey = params && (params.fileKey || params.Key);
+  var fileStreamDocId = Streams.Files.findOne({fileStreamId: params.metadata.fileStreamId})._id;
+  var queueStreamDocId = Streams.Queues.findOne({queueId: params.metadata.queueId})._id;
 
+  console.log('Testing doc ids:', fileStreamDocId, queueStreamDocId);
   // Clean up for AWS sdk
   delete params.fileKey;
+  delete params.metadata;
 
   // This small function stops the write stream until we have connected with
   // the s3 server
@@ -126,6 +130,9 @@ AWS.S3.prototype.createWriteStream = function(params, options) {
           PartNumber: localChunkNumber
         };
 
+        writeStream.on('chunk', function (args) {
+          console.log('************\n \n Chunk uploaded! \n \n*********')
+        })
         // XXX: event for debugging
         writeStream.emit('chunk', {
           ETag: result.ETag,
@@ -133,6 +140,7 @@ AWS.S3.prototype.createWriteStream = function(params, options) {
           receivedSize: receivedSize,
           uploadedSize: uploadedSize
         });
+
 
         // The incoming stream has finished giving us all data and we have
         // finished uploading all that data to S3. So tell S3 to assemble those

@@ -135,17 +135,17 @@ FS.Store.S3 = function(name, options) {
     // options.ContentLength = fileObj.size ...
     createWriteStream: function(fileKey, options) {
       options = options || {};
-
       if (options.contentType) {
         options.ContentType = options.contentType;
       }
-
       // We dont support array of aliases
       delete options.aliases;
       // We dont support contentType
       delete options.contentType;
-      // We dont support metadata use Metadata?
-      delete options.metadata;
+      
+      // ** we are no longer deleting metadata however this must be cleaned up in s3.upload before
+      // passing it to AWS SDK.
+      // delete options.metadata;
 
       // Set options
       var options = FS.Utility.extend({
@@ -154,7 +154,6 @@ FS.Store.S3 = function(name, options) {
         fileKey: fileKey,
         ACL: defaultAcl
       }, options);
-
       return S3.createWriteStream(options);
     },
     remove: function(fileKey, callback) {
